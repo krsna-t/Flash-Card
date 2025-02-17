@@ -5,9 +5,9 @@ BACKGROUND_COLOR = "#B1DDC6"
 
 crnt_card={}
 try:
-    data=pandas.read_csv("day31-35/flash-card-project-start/data/remaining_words.csv")
+    data=pandas.read_csv("data/remaining_words.csv")
 except FileNotFoundError:
-    original_data=pandas.read_csv("day31-35/flash-card-project-start/data/french_words.csv")
+    original_data=pandas.read_csv("data/french_words.csv")
     to_learn=original_data.to_dict(orient="records")
 else:
     to_learn=data.to_dict(orient="records")
@@ -16,7 +16,7 @@ else:
 def know():
     to_learn.remove(crnt_card)
     data=pandas.DataFrame(to_learn)
-    data.to_csv("day31-35/flash-card-project-start/data/remaining_words.csv")
+    data.to_csv("data/remaining_words.csv")
     next_card()
 
 def next_card():
@@ -41,10 +41,10 @@ filp_timer=window.after(3000,func=flip_card)
 
 
 canvas=Canvas(height=600,width=800)
-card_bimg=PhotoImage(file="day31-35/flash-card-project-start/images/card_back.png")
-wrong_img=PhotoImage(file="day31-35/flash-card-project-start/images/wrong.png")
-right_img=PhotoImage(file="day31-35/flash-card-project-start/images/right.png")
-imj=PhotoImage(file="day31-35/flash-card-project-start/images/card_front.png")
+card_bimg=PhotoImage(file="images/card_back.png")
+wrong_img=PhotoImage(file="images/wrong.png")
+right_img=PhotoImage(file="images/right.png")
+imj=PhotoImage(file="images/card_front.png")
 card_bg=canvas.create_image(400,264,image=imj)
 card_title=canvas.create_text(400,100,text="",font=("Ariel",20,"italic"))
 card_word=canvas.create_text(400,230,text="",font=("Ariel",20,"bold"))
